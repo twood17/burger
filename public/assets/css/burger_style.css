@@ -4,4 +4,8 @@
      margin: 0 auto;
      background: #9B9B9B;
      color: #C62300;
- }
+ };
+
+ #listOfBurgers {
+    text-align: left
+ };

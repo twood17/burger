@@ -1,0 +1,8 @@
+<li>
+    <p>{{this.id}}. {{this.burger_name}}</p>
+    <button type="button" class="changeDevour" data-id="{{id}}" data-newdevour="{{devoured}}">
+        {{#unless devour}}DEVOUR ME!{{/unless}}
+    </button>
+
+    <button class="deleteBurger" data-id="{{this.id}}">DELETE!</button>
+</li>
