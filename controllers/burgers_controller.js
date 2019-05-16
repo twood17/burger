@@ -4,16 +4,28 @@ var router = express.Router();
 
 var burger = require("../models/burger.js");
 
-var app = express();
 
-var path = require("path");
+// gets the index page and allows the burgers table to display via the hbsObject
+router.get("/", function (req, res) {
+    burger.selectAll(function (data) {
+        var hbsObject = {
+            burgers: data
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+    });
+});
 
-app.use('/', express.static(path.join(__dirname, '/public')))
-
-router.get("/", function (req, res){
-    res.render("index")
-})
-
+router.post("/api/burgers", function (req, res) {
+    burger.insertOne([
+        "burger_name"
+    ], [
+            req.body.name
+        ], function (result) {
+            // Send back the ID of the new quote
+            res.json({ id: result.insertId });
+        });
+});
 
 //Exporting to ../server.js
 module.exports = router
