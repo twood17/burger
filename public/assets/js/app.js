@@ -21,7 +21,7 @@ $(function() {
       });
 
 
-      $(".change-devour").on("click", function(event) {
+      $(".changeDevour").on("click", function(event) {
         var id = $(this).data("id");
         var newDevour = $(this).data("newdevour");
     
@@ -41,4 +41,17 @@ $(function() {
           }
         );
       });
+
+      $(".deleteBurger").on("click", function (event) {
+          var id = $(this).data("id");
+
+          $.ajax("/api/burgers/"+ id, {
+              type: "DELETE",
+          }).then(
+              function() {
+                  console.log("Burger Deleted");
+                  location.reload()
+              }
+          )
+      })
 });
